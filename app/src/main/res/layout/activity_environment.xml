@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_environment"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/environment_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/environment"
+        android:paddingLeft="5dp"
+        style="@style/title_text"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/environment_title" />
+    </android.support.v7.widget.Toolbar>
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--显示温度-->
+            <LinearLayout
+                android:id="@+id/ll_temperture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:background="@android:color/white"
+                >
+                <ImageView
+                    android:id="@+id/iv_temperture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher"
+                    android:layout_margin="20dp"/>
+                <TextView
+                    android:id="@+id/tv_temperture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="室内温度:"
+                    android:layout_marginTop="20dp"
+                    />
+                <TextView
+                    android:id="@+id/temperture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25℃"
+                    android:layout_margin="20dp"
+                    android:textSize="30dp"
+                    />
+            </LinearLayout>
+            <!--显示湿度-->
+            <LinearLayout
+                android:id="@+id/ll_humidity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:layout_marginTop="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_launcher"
+                    android:layout_margin="20dp"/>
+                <TextView
+                    android:id="@+id/tv_humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="室内湿度:"
+                    android:layout_marginTop="20dp"
+                    />
+                <TextView
+                    android:id="@+id/humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30℃"
+                    android:layout_margin="20dp"
+                    android:textSize="30dp"
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--TitleBar-->
+    <LinearLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        >
+        <!--返回按钮-->
+        <ImageButton
+            android:id="@+id/contact_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:src="@drawable/back_white"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:onClick="onback" />
+        <TextView
+            android:id="@+id/tv_titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:text="@string/freq_contacts"
+            android:padding="10dp"
+            style="@style/title_text"
+            />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_contacts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        android:layout_below="@+id/top">
+    </ListView>
+
+    <com.example.shengchun.elderassistant.util.address.SideBar
+        android:id="@+id/side_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="20dp"
+        android:textSize="15dp"
+        android:textColor="@color/text_pressed"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/top" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="normal"
+        app:rippleColor="@color/colorAccent"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/floatingActionButton"
+        android:layout_marginEnd="28dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

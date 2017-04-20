@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:layout_height="wrap_content">
+    <!--目录字母-->
+    <TextView
+        android:id="@+id/tv_catalog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:textSize="30dp"
+        android:textColor="#12ab23"
+
+        />
+    <!--android:background="#FFFFFF"-->
+
+    <LinearLayout
+        android:id="@+id/ll_user"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_thumb"
+            android:layout_margin="20dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp" />
+        <TextView
+            android:id="@+id/tv_user"
+            android:layout_gravity="center_vertical"
+            android:textSize="20dp"
+            android:textColor="#0b070b"
+            android:paddingTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
