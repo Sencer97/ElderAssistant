@@ -46,7 +46,7 @@ public class EnvironmentActivity extends Activity {
         smoke = (TextView) findViewById(R.id.smoke);
 
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.wrl_refresh);
-        swipeRefreshLayout.setColorSchemeColors(Color.BLUE,Color.GREEN,Color.RED);
+        swipeRefreshLayout.setColorSchemeColors(Color.BLUE, Color.GREEN,Color.RED);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
