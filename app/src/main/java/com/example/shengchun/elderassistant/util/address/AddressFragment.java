@@ -15,7 +15,7 @@ import com.example.shengchun.elderassistant.R;
  * @author Sencer
  * @create 2017/3/19
  * @vertion 1.0
- * @description
+ * @description 通讯界面
  */
 
 public class AddressFragment extends Fragment {

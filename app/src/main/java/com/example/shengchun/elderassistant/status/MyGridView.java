@@ -28,5 +28,18 @@ public class MyGridView extends GridView {
         int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,
                 MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, expandSpec);
+
+        /**
+         *   测量模式： UNSPECIFIED   --可取任意尺寸
+         *             EXACTLY      --应该取得尺寸           --match_parent
+         *             AT_MOST      --当前尺寸能取得最大尺寸  --wrap_content
+         *         使用的是二进制： 2bit布局模式     30bit尺寸
+         *          int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+         *          int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+         *
+         *
+         *
+         */
+
     }
 }

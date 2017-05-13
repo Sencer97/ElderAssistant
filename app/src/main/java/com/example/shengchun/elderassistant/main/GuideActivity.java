@@ -11,7 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -33,31 +34,11 @@ public class GuideActivity extends Activity {
     private int[] pics = {R.drawable.guide_1,R.drawable.guide_2,R.drawable.guide_3};
     LinearLayout ll_points;
     private ImageView[] points = new ImageView[3];
-    Button btn;
-
-    /**
-     * 判断是否是第一次开启app
-     * @return
-     */
-    public boolean isFirstRun(){
-        SharedPreferences sharedPreferences = this.getSharedPreferences("share", MODE_PRIVATE);
-        boolean isFirstRun = sharedPreferences.getBoolean("isFirstRun", true);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        if (isFirstRun)
-        {
-            Log.d("debug", "第一次运行");
-            editor.putBoolean("isFirstRun", false);
-            editor.commit();
-            return true;
-        } else {
-            Log.d("debug", "不是第一次运行");
-            return false;
-        }
-    }
+    ImageView logo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);      //去掉标题栏
         setContentView(R.layout.logo_guide);
         // 判断是否首次登录程序
         if (isFirstRun()) {
@@ -65,33 +46,50 @@ public class GuideActivity extends Activity {
             init();
             initData();
         } else {
-
-          // new Handler().postDelayed(new Thread(),3000);
-            try {
-                new Thread().sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            Intent intent = new Intent(GuideActivity.this,
-                    MainActivity.class);
-            startActivity(intent);
-            this.finish();    //结束当前活动
+            //延迟两秒后进入主界面
+            logo = (ImageView) findViewById(R.id.logo);
+            //logo缩放动画
+            Animation animation = AnimationUtils.loadAnimation(this,R.anim.dialog_enter);
+            logo.setAnimation(animation);
+            logo.startAnimation(animation);
+          //  ScaleAnimation sa = new ScaleAnimation(0.5f, 1.0f, 0.5f,1.0f);
+          //  sa.setDuration(2000);
+          //  logo.setAnimation(sa);
+          //  sa.start();
+            splashActivity(3);
         }
+    }
 
-
+            /**
+             * 判断是否是第一次开启app
+             * @return
+             */
+    public boolean isFirstRun(){
+           SharedPreferences sharedPreferences = this.getSharedPreferences("share", MODE_PRIVATE);
+           boolean isFirstRun = sharedPreferences.getBoolean("isFirstRun", true);
+           SharedPreferences.Editor editor = sharedPreferences.edit();
+           if (isFirstRun){
+               Log.d("debug", "第一次运行");
+               editor.putBoolean("isFirstRun", false);
+               editor.commit();
+               //TODO 取消引导界面 置为false
+               return false;
+           } else {
+                    Log.d("debug", "不是第一次运行");
+                    return false;
+           }
     }
     /**
      * 延迟多少秒进入主界面
      * @param second 秒
      */
-    private void skipActivity(int second) {
+    private void splashActivity(int second) {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(GuideActivity.this,
-                        MainActivity.class);
+                Intent intent = new Intent(GuideActivity.this, MainActivity.class);
                 startActivity(intent);
-                GuideActivity.this.finish();
+                finish();
             }
         }, 1000*second);
     }

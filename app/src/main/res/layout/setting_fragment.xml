@@ -32,10 +32,10 @@
             android:gravity="center_vertical">
             <ImageView
                 android:id="@+id/iv_login"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:src="@drawable/search" />
+                android:src="@drawable/login" />
             <TextView
                 android:id="@+id/tv_login"
                 android:layout_width="wrap_content"
@@ -45,7 +45,16 @@
                 android:textColor="@color/text"
                 android:layout_gravity="center"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/iv_login" />
+                android:layout_toEndOf="@+id/iv_login"
+                android:layout_marginLeft="10dp"/>
+            <ImageView
+                android:src="@drawable/go"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="25dp"
+                android:layout_centerVertical="true"
+                />
         </RelativeLayout>
     <!--华丽分割线-->
     <TextView
@@ -66,20 +75,29 @@
         android:gravity="center_vertical">
         <ImageView
             android:id="@+id/iv_feedback"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:src="@drawable/search" />
+            android:src="@drawable/feedback" />
         <TextView
             android:id="@+id/tv_feedback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="意见反馈"
+            android:layout_marginLeft="10dp"
             android:textSize="20dp"
             android:textColor="@color/text"
             android:layout_gravity="center"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/iv_feedback" />
+        <ImageView
+            android:src="@drawable/go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="25dp"
+            android:layout_centerVertical="true"
+            />
     </RelativeLayout>
     <!--华丽分割线-->
     <TextView
@@ -118,15 +136,16 @@
         android:gravity="center_vertical">
         <ImageView
             android:id="@+id/iv_notice"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:src="@drawable/search" />
+            android:src="@drawable/notice" />
         <TextView
             android:id="@+id/tv_notice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="通知栏显示连接状态"
+            android:layout_marginLeft="10dp"
             android:textSize="20dp"
             android:textColor="@color/text"
             android:gravity="center"
@@ -162,20 +181,29 @@
         android:gravity="center_vertical">
         <ImageView
             android:id="@+id/iv_about"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:src="@drawable/search" />
+            android:src="@drawable/info" />
         <TextView
             android:id="@+id/tv_about"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="关于软件"
+            android:layout_marginLeft="10dp"
             android:textSize="20dp"
             android:textColor="@color/text"
             android:layout_gravity="center"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/iv_about" />
+        <ImageView
+            android:src="@drawable/go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="25dp"
+            android:layout_centerVertical="true"
+            />
     </RelativeLayout>
     <!--华丽分割线-->
     <TextView
@@ -184,19 +212,53 @@
         android:background="@color/line"
         android:layout_gravity="center"
         />
-    <Button
-        android:id="@+id/exit_btn"
-        android:text="退出应用"
-        android:textSize="18dp"
-        android:textColor="@android:color/white"
-        android:background="@drawable/arc_button_selector"
-        android:layout_width="250dp"
+    <!--退出软件-->
+    <RelativeLayout
+        android:id="@+id/rl_exit_app"
+        android:paddingTop="5dp"
+        android:paddingLeft="20dp"
+        android:clickable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+        <ImageView
+            android:id="@+id/iv_exit_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@drawable/exit" />
+        <TextView
+            android:id="@+id/tv_exit_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="退出软件"
+            android:layout_marginLeft="10dp"
+            android:textSize="20dp"
+            android:textColor="@color/text"
+            android:layout_gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/iv_exit_app" />
+    </RelativeLayout>
+    <!--华丽分割线-->
+    <TextView
+        android:layout_width="370dp"
+        android:layout_height="0.1dp"
+        android:background="@color/line"
         android:layout_gravity="center"
-        android:layout_margin="30dp">
-    </Button>
-
-
+        />
+    <!--<Button-->
+        <!--android:id="@+id/exit_btn"-->
+        <!--android:text="退出应用"-->
+        <!--android:textSize="18dp"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:background="@drawable/arc_button_selector"-->
+        <!--android:visibility="gone"-->
+        <!--android:layout_width="250dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_margin="30dp">-->
+    <!--</Button>-->
 
 
 </LinearLayout>

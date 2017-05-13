@@ -57,6 +57,7 @@ public class SortAdapter extends BaseAdapter {
             viewHolder.name = (TextView) view.findViewById(R.id.tv_user);
             viewHolder.catalog = (TextView) view.findViewById(R.id.tv_catalog);
             viewHolder.thumb = (ImageView) view.findViewById(R.id.iv_thumb);
+            viewHolder.phoneNum = (TextView) view.findViewById(R.id.phoneNUm);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
@@ -74,6 +75,7 @@ public class SortAdapter extends BaseAdapter {
         }
 
         viewHolder.name.setText(this.list.get(position).getName());
+        viewHolder.phoneNum.setText(this.list.get(position).getPhoneNum());
         int color = generator.getRandomColor();
         TextDrawable.IBuilder builder = TextDrawable.builder().beginConfig().endConfig().round();
         TextDrawable icon = builder.build(viewHolder.name.getText().toString().substring(0,1),color);
@@ -86,6 +88,7 @@ public class SortAdapter extends BaseAdapter {
         ImageView thumb;
         TextView catalog;
         TextView name;
+        TextView phoneNum;
     }
 
     /**

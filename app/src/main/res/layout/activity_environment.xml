@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
    >
+
+
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/environment_toolbar"
         android:layout_width="match_parent"
@@ -23,6 +26,7 @@
 
 
     <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/wrl_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
@@ -33,30 +37,31 @@
 
             <!--显示温度-->
             <LinearLayout
-                android:id="@+id/ll_temperture"
+                android:id="@+id/ll_temperature"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:background="@android:color/white"
                 >
                 <ImageView
-                    android:id="@+id/iv_temperture"
+                    android:id="@+id/iv_temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@drawable/tmpt"
                     android:layout_margin="20dp"/>
                 <TextView
-                    android:id="@+id/tv_temperture"
+                    android:id="@+id/tv_temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="室内温度:"
+                    android:textSize="20dp"
                     android:layout_marginTop="20dp"
                     />
                 <TextView
-                    android:id="@+id/temperture"
+                    android:id="@+id/temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="25℃"
+                    android:text="0 ℃"
                     android:layout_margin="20dp"
                     android:textSize="30dp"
                     />
@@ -74,28 +79,130 @@
                     android:id="@+id/iv_humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@drawable/humidity"
                     android:layout_margin="20dp"/>
                 <TextView
                     android:id="@+id/tv_humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="室内湿度:"
+                    android:textSize="20dp"
                     android:layout_marginTop="20dp"
                     />
                 <TextView
                     android:id="@+id/humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="30℃"
+                    android:text="0 %"
+                    android:layout_margin="20dp"
+                    android:textSize="30dp"
+                    />
+            </LinearLayout>
+            <!--显示PM2.5值-->
+            <LinearLayout
+                android:id="@+id/ll_pm2_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:layout_marginTop="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_pm2_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/pm2_5"
+                    android:layout_margin="20dp"/>
+                <TextView
+                    android:id="@+id/tv_pm2_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PM2.5:"
+                    android:textSize="20dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/pm2_5"
+                    android:paddingLeft="23dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 μg/m³"
+                    android:layout_margin="20dp"
+                    android:textSize="30dp"
+                    />
+            </LinearLayout>
+            <!--显示CO气体浓度值-->
+            <LinearLayout
+                android:id="@+id/ll_co"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:layout_marginTop="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_co"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/co"
+                    android:layout_margin="20dp"/>
+                <TextView
+                    android:id="@+id/tv_co"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CO:"
+                    android:textSize="20dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/co"
+                    android:paddingLeft="55dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 %"
+                    android:layout_margin="20dp"
+                    android:textSize="30dp"
+                    />
+            </LinearLayout>
+            <!--显示烟雾浓度值-->
+            <LinearLayout
+                android:id="@+id/ll_smoke"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:clickable="true"
+                android:layout_marginTop="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_smoke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/smoke"
+                    android:layout_margin="20dp"/>
+
+                <TextView
+                    android:id="@+id/tv_smoke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="烟雾浓度:"
+                    android:textSize="20dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/smoke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 %"
                     android:layout_margin="20dp"
                     android:textSize="30dp"
                     />
             </LinearLayout>
 
-
         </LinearLayout>
-
     </android.support.v4.widget.SwipeRefreshLayout>
 
 

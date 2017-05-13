@@ -69,7 +69,6 @@ public class AppliancesActivity extends Activity {
                             Toast.makeText(getBaseContext(),"Turn On light",Toast.LENGTH_SHORT).show();
                         }else {
                             //turn off the light
-
                             Toast.makeText(getBaseContext(),"Turn Off light",Toast.LENGTH_SHORT).show();
                         }
                         break;

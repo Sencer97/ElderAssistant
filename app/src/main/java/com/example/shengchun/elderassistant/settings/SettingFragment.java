@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
@@ -19,15 +18,18 @@ import com.example.shengchun.elderassistant.R;
  * @author Sencer
  * @create 2017/3/19
  * @vertion 1.0
- * @description
+ * @description   设置界面
  */
 
 public class SettingFragment extends Fragment {
     private ViewGroup group;
-    private RelativeLayout rl_login,rl_feedback,rl_about,rl_notice;
-    private Button exit_btn;
-    private View.OnClickListener click;
-    private Switch showConnectSwitch;
+    private RelativeLayout rl_login;
+    private RelativeLayout rl_feedback;
+    private RelativeLayout rl_about;
+    private RelativeLayout rl_notice;
+    private RelativeLayout rl_exit;
+    private View.OnClickListener click;     //布局点击监听
+    private Switch showConnectSwitch;      //转换器
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container,  Bundle savedInstanceState) {
         group = (ViewGroup) inflater.inflate(R.layout.setting_fragment,container,false);
@@ -35,13 +37,18 @@ public class SettingFragment extends Fragment {
         return group;
     }
 
+    /**
+     * 初始化布局
+     */
     private void init() {
         rl_login = (RelativeLayout) group.findViewById(R.id.rl_login);
         rl_feedback = (RelativeLayout) group.findViewById(R.id.rl_feedback);
         rl_about = (RelativeLayout) group.findViewById(R.id.rl_about);
         rl_notice = (RelativeLayout) group.findViewById(R.id.rl_notice);
-        exit_btn = (Button) group.findViewById(R.id.exit_btn);
+        rl_exit = (RelativeLayout) group.findViewById(R.id.rl_exit_app);
         showConnectSwitch = (Switch) group.findViewById(R.id.switch_connect);
+
+        //switch 切换监听
         showConnectSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -54,30 +61,31 @@ public class SettingFragment extends Fragment {
                 }
             }
         });
+
+        //布局点击事件监听
         click = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()){
                     case R.id.rl_login:
-                        Toast.makeText(getContext(),"Login click",Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getContext(),LoginActivity.class));
                         break;
                     case R.id.rl_feedback:
                         startActivity(new Intent(getContext(),FeedbackActivity.class));
-                        Toast.makeText(getContext(),"feedback click",Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.rl_about:
                         startActivity(new Intent(getContext(),AboutAppActivity.class));
-                        Toast.makeText(getContext(),"about click",Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.rl_notice:
                         if (showConnectSwitch.isChecked()){
                             showConnectSwitch.setChecked(false);
+
                         }else{
                             showConnectSwitch.setChecked(true);
+
                         }
                         break;
-                    case R.id.exit_btn:
+                    case R.id.rl_exit_app:
                         android.support.v7.app.AlertDialog dialog = new android.support.v7.app.AlertDialog.Builder(getContext()).setTitle("提示")
                                 .setMessage("确定要退出应用？")
                                 .setPositiveButton("是", new DialogInterface.OnClickListener() {
@@ -87,7 +95,6 @@ public class SettingFragment extends Fragment {
                                     }
                                 })
                                 .setNegativeButton("否",null).show();
-                    //    dialog.getWindow().setWindowAnimations(R.style.dialogWindowAnim);
                         break;
                 }
             }
@@ -96,7 +103,7 @@ public class SettingFragment extends Fragment {
         rl_login.setOnClickListener(click);
         rl_feedback.setOnClickListener(click);
         rl_notice.setOnClickListener(click);
-        exit_btn.setOnClickListener(click);
+        rl_exit.setOnClickListener(click);
     }
 
 

@@ -10,13 +10,15 @@ package com.example.shengchun.elderassistant.util.address;
 public class Contacts implements Comparable<Contacts> {
 
     private String name;
+    private String phoneNum;
     private String spell;
     private String firstLetter;  //拼写首字母
 
     public Contacts(){
     }
-    public Contacts(String name){
+    public Contacts(String name,String phoneNum){
         this.name = name;
+        this.phoneNum = phoneNum;
         spell = Cn2Spell.getSpell(name);
         firstLetter = spell.substring(0,1).toUpperCase();
         if(!firstLetter.matches("[A-Z]")){       //匹配字母，正则表达式
@@ -31,6 +33,8 @@ public class Contacts implements Comparable<Contacts> {
     public String getName() {
         return name;
     }
+
+    public String getPhoneNum(){ return phoneNum;}
 
     public String getFirstLetter() {
         return firstLetter;

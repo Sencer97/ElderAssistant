@@ -23,10 +23,7 @@
         android:layout_height="0.1dp"
         android:background="@color/line"
         />
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
         <LinearLayout
             android:id="@+id/ll_scroll"
             android:orientation="vertical"
@@ -37,7 +34,7 @@
                 android:id="@+id/tv_devices"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="我的设备"
+                android:text="已配对设备"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
                 android:paddingLeft="35dp"
@@ -54,7 +51,9 @@
             <ListView
                 android:id="@+id/paired_devices"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></ListView>
+                android:layout_height="70dp">
+
+            </ListView>
 
             <RelativeLayout
                 android:id="@+id/query"
@@ -82,7 +81,6 @@
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/iv_search" />
             </RelativeLayout>
-
             <!--华丽分割线-->
             <TextView
                 android:layout_width="370dp"
@@ -91,8 +89,11 @@
                 android:layout_gravity="center"
                 />
         </LinearLayout>
+    <ListView
+        android:id="@+id/lv_device_discover"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
 
-
-    </ScrollView>
 
 </LinearLayout>

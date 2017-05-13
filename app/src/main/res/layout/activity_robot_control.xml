@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    >
-
+    android:weightSum="1">
     <android.support.v7.widget.Toolbar
         android:id="@+id/robot_toolbar"
         android:layout_width="match_parent"
@@ -23,8 +22,12 @@
             android:id="@+id/robot_title" />
     </android.support.v7.widget.Toolbar>
 
-
-
-
+    <com.example.shengchun.elderassistant.status.RoundControlView
+        android:layout_margin="40dp"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/roundControlView">
+        </com.example.shengchun.elderassistant.status.RoundControlView>
 
 </LinearLayout>

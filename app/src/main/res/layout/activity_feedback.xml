@@ -1,17 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_feedback"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context="com.example.shengchun.elderassistant.settings.FeedbackActivity">
-
-    <TextView
+    android:orientation="vertical"
+    android:background="#e4dede"
+    android:weightSum="1">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/feedback_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is feedbackActivity"
-        android:textSize="30dp"
-        android:gravity="center"
-        />
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/feedback"
+            android:paddingLeft="5dp"
+            android:gravity="center"
+            style="@style/title_text"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/robot_title" />
+    </android.support.v7.widget.Toolbar>
+    <TextView
+        android:id="@+id/tv_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="欢迎提出宝贵的意见和建议，您的吐槽就是我的动力~ ~"
+        android:background="#e4dede"
+        android:padding="20dp" />
+
+    <EditText
+        android:id="@+id/et_advice"
+        android:layout_margin="10dp"
+        android:background="@drawable/editbox_shape"
+        android:padding="10dp"
+        android:textSize="15dp"
+        android:hint="请输入您的反馈意见（200字以内）"
+        android:gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_weight="0.39" />
+
+    <!--<EditText-->
+        <!--android:id="@+id/et_mail"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:background="@drawable/editbox_shape"-->
+        <!--android:padding="10dp"-->
+        <!--android:textSize="15dp"-->
+        <!--android:hint="您的邮箱"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="0.04" />-->
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#ffa36f"
+        android:text="提 交"
+        android:textSize="20dp"
+        android:background="@drawable/arc_button_selector"
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

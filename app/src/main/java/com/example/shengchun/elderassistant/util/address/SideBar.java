@@ -14,7 +14,7 @@ import com.example.shengchun.elderassistant.R;
  * @author Sencer
  * @create 2017/3/24
  * @vertion 1.0
- * @description
+ * @description  导航侧栏
  */
 
 public class SideBar extends TextView {

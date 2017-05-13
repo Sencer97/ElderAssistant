@@ -8,6 +8,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,7 +21,7 @@ import com.example.shengchun.elderassistant.util.address.AddressFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-    /**
+/**
      * @author Sencer
      * @create 2017/3/18
      * @vertion 1.0
@@ -28,7 +29,8 @@ import java.util.List;
      */
 
 public class MainActivity extends FragmentActivity {
-    private ViewPager viewPager;
+        private static final String TAG = "MainActivity";
+        private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
 
     //三个碎片界面
@@ -52,7 +54,6 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         init();
     }
-
 
     private void init() {
         viewPager = (ViewPager) findViewById(R.id.pager);
@@ -169,5 +170,17 @@ public class MainActivity extends FragmentActivity {
             }
         }
     };
-
+        @Override
+        public void onBackPressed() {
+            super.onBackPressed();
+        }
+        /**
+         * 设置屏幕的背景透明度 1表示不透明，0表示全透明
+         * @param bgAlpha
+         */
+        public void backgroundAlpha(float bgAlpha) {
+            WindowManager.LayoutParams lp = getWindow().getAttributes();
+            lp.alpha = bgAlpha; // 0.0-1.0
+            getWindow().setAttributes(lp);
+        }
 }
