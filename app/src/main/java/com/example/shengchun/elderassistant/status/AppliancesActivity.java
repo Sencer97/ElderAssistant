@@ -2,23 +2,52 @@ package com.example.shengchun.elderassistant.status;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.shengchun.elderassistant.R;
 import com.suke.widget.SwitchButton;
 
+import java.io.IOException;
+import java.io.OutputStream;
+
 public class AppliancesActivity extends Activity {
     private Toolbar toolbar;
     private SwitchButton sb_tv,sb_air,sb_light;
-
+    private OutputStream os;
+    private static final String TAG = "AppliancesActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appliances);
         init();
+    }
+    /**  写数据
+     *  @param  s 要写入的字符串
+     */
+    public void writeData(String s){
+        final String data = s;
+        new Thread(){
+            @Override
+            public void run() {
+                try{
+                    byte[] buffer = data.getBytes();
+                    if(BLEConnectThread.bluetoothSocket==null){
+                        finish();
+                    }else{
+                        os =  BLEConnectThread.bluetoothSocket.getOutputStream();             //getOutputStream();
+                        os.write(buffer);
+                        Log.e(TAG, "run: 开关灯~");
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.e(TAG,e.toString());
+                }
+            }
+        }.start();
     }
     private void init() {
         toolbar = (Toolbar) findViewById(R.id.appliances_toolbar);
@@ -41,12 +70,12 @@ public class AppliancesActivity extends Activity {
                         if (isChecked){
                             //turn on the air
 
-                            Toast.makeText(getBaseContext(),"Turn On air",Toast.LENGTH_SHORT).show();
+
+                            Snackbar.make(sb_air,"空调已开~",Snackbar.LENGTH_SHORT).show();
                         }else {
                             //turn off the air
 
-
-                            Toast.makeText(getBaseContext(),"Turn Off air",Toast.LENGTH_SHORT).show();
+                            Snackbar.make(sb_air,"空调已关~",Snackbar.LENGTH_SHORT).show();
                         }
 
                         break;
@@ -54,22 +83,22 @@ public class AppliancesActivity extends Activity {
                         if (isChecked){
                             //turn on the TV
 
-                            Toast.makeText(getBaseContext(),"Turn On TV",Toast.LENGTH_SHORT).show();
+                            Snackbar.make(sb_tv,"电视已开~",Snackbar.LENGTH_SHORT).show();
                         }else {
                             //turn off the TV
 
-                            Toast.makeText(getBaseContext(),"Turn Off TV",Toast.LENGTH_SHORT).show();
+                            Snackbar.make(sb_tv,"电视已关~",Snackbar.LENGTH_SHORT).show();
                         }
-
                         break;
                     case R.id.sb_light:
                         if (isChecked){
                             //turn on the light
 
-                            Toast.makeText(getBaseContext(),"Turn On light",Toast.LENGTH_SHORT).show();
+                            Snackbar.make(sb_light,"电灯已开~",Snackbar.LENGTH_SHORT).show();
                         }else {
                             //turn off the light
-                            Toast.makeText(getBaseContext(),"Turn Off light",Toast.LENGTH_SHORT).show();
+                            Snackbar.make(sb_light,"电灯已关~",Snackbar.LENGTH_SHORT).show();
+
                         }
                         break;
 

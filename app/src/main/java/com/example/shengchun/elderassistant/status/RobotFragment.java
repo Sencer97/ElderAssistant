@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import static com.example.shengchun.elderassistant.R.id.query;
+
 /**
  * @author Sencer
  * @create 2017/3/19
@@ -51,6 +53,7 @@ public class RobotFragment extends Fragment {
     private List connList, discoverList;
     private ArrayAdapter listAdapter;      //已配对设备
     private ArrayAdapter discAdapter;
+    private boolean isRegister = false;
 
     private Set<BluetoothDevice> pairedDevices;
     private static final String TAG = "RobotFragment";
@@ -167,14 +170,17 @@ public class RobotFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        context.unregisterReceiver(searchReceiver);
+        if(isRegister){
+            context.unregisterReceiver(searchReceiver);
+            isRegister = false;
+        }
     }
 
     private void init() {
         gridView = (GridView) viewGroup.findViewById(R.id.gridview);
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener(gridItemClick);
-        relativeLayout = (RelativeLayout) viewGroup.findViewById(R.id.query);
+        relativeLayout = (RelativeLayout) viewGroup.findViewById(query);
         discoverList = new ArrayList<String>();
         connList = new ArrayList<String>();
         connDevices = (ListView) viewGroup.findViewById(R.id.paired_devices);
@@ -255,7 +261,7 @@ public class RobotFragment extends Fragment {
                 intent.addAction(BluetoothAdapter.ACTION_STATE_CHANGED); //每当蓝牙模块被打开或者关闭，应用程序可以为通过ACTION_STATE_CHANGED值来监听全局的消息通知。
                 bluetoothAdapter.startDiscovery();
                 context.registerReceiver(searchReceiver, intent);
-
+                isRegister = true;
             }
         });
     }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/voice_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="语音互动"
+            android:paddingLeft="5dp"
+            android:gravity="center"
+            style="@style/title_text"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            />
+    </android.support.v7.widget.Toolbar>
+
+    <ListView
+        android:id="@+id/lv_text"
+        android:layout_width="match_parent"
+        android:layout_height="422dp"
+        android:divider="@android:color/white"
+        android:layout_weight="0.82"></ListView>
+
+    <ImageButton
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="speak"
+        android:src="@drawable/voice"
+        android:background="@android:color/white"
+        android:id="@+id/btn_speak"
+        android:layout_margin="10dp"
+         />
+</LinearLayout>

@@ -29,8 +29,8 @@ import java.util.List;
      */
 
 public class MainActivity extends FragmentActivity {
-        private static final String TAG = "MainActivity";
-        private ViewPager viewPager;
+    private static final String TAG = "MainActivity";
+    private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
 
     //三个碎片界面

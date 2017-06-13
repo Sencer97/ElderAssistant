@@ -42,13 +42,11 @@ public class BLEConnectThread extends Thread {
                 bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
             }
             bluetoothAdapter.cancelDiscovery();     //连接设备之前就取消搜索设备
-
             if(!conntected){
-                conntectDevice();
+              conntectDevice();
             }
-            Log.e(TAG, "test aaaaa");
-            while (!conntected && connectTime <= 10000) {         //设置连接时间
-                conntectDevice();
+            while (!conntected && connectTime <= 10000) {         //设置持续连接时间
+               conntectDevice();
             }
         }
     public void conntectDevice() {
@@ -56,7 +54,6 @@ public class BLEConnectThread extends Thread {
             if (device.getBondState() == android.bluetooth.BluetoothDevice.BOND_NONE) {
                 Method creMethod = android.bluetooth.BluetoothDevice.class.getMethod("createBond");
                 Log.e(TAG, "conntectDevice: 开始配对！" );
-//                    Toast.makeText(getContext(),"即将尝试配对...",Toast.LENGTH_SHORT).show();
                 creMethod.invoke(device);
             }else{
                 Log.e(TAG, "conntectDevice: 已和该设备配对！！！");
@@ -74,13 +71,13 @@ public class BLEConnectThread extends Thread {
         }catch (IOException e){
             connectTime++;
             conntected = false;
-
-            try{
+            Log.e(TAG, "conntectDevice: " +e.toString());
+            /*try{
                 bluetoothSocket.close();
                 bluetoothSocket = null;
             }catch (IOException e1){
                 Log.e(TAG, "conntectDevice: 连接失败!");
-            }
+            }*/
         }
         finally {
             connecting = false;

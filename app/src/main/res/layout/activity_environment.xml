@@ -22,6 +22,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/environment_title" />
+
+
     </android.support.v7.widget.Toolbar>
 
 
@@ -57,11 +59,12 @@
                     android:textSize="20dp"
                     android:layout_marginTop="20dp"
                     />
+
                 <TextView
                     android:id="@+id/temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0 ℃"
+                    android:text="20 ℃"
                     android:layout_margin="20dp"
                     android:textSize="30dp"
                     />
@@ -93,7 +96,7 @@
                     android:id="@+id/humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0 %"
+                    android:text="52 %"
                     android:layout_margin="20dp"
                     android:textSize="30dp"
                     />
@@ -127,7 +130,7 @@
                     android:paddingLeft="23dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0 μg/m³"
+                    android:text="70 μg/m³"
                     android:layout_margin="20dp"
                     android:textSize="30dp"
                     />
@@ -151,17 +154,17 @@
                     android:id="@+id/tv_co"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="CO:"
+                    android:text="CO毒气:"
                     android:textSize="20dp"
                     android:layout_marginTop="20dp"
                     />
 
                 <TextView
                     android:id="@+id/co"
-                    android:paddingLeft="55dp"
+                    android:paddingLeft="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0 %"
+                    android:text="0.01 %"
                     android:layout_margin="20dp"
                     android:textSize="30dp"
                     />
@@ -196,7 +199,7 @@
                     android:id="@+id/smoke"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0 %"
+                    android:text="0.01 %"
                     android:layout_margin="20dp"
                     android:textSize="30dp"
                     />

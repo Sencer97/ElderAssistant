@@ -22,7 +22,7 @@ public class AddressFragment extends Fragment {
 
     private View groupView;
     ImageView freq_contacts,urgent_call;
-    LinearLayout left,right;
+    LinearLayout freContact, urgentCall,voice;
 
 
     @Override
@@ -35,10 +35,12 @@ public class AddressFragment extends Fragment {
     private void init() {
         freq_contacts = (ImageView) groupView.findViewById(R.id.iv_freq_contacts);
         urgent_call = (ImageView) groupView.findViewById(R.id.iv_urgent);
-        left = (LinearLayout) groupView.findViewById(R.id.ll_address_left);
-        right = (LinearLayout) groupView.findViewById(R.id.ll_address_right);
-        left.setOnClickListener(listener);
-        right.setOnClickListener(listener);
+        freContact = (LinearLayout) groupView.findViewById(R.id.ll_address_left);
+        urgentCall = (LinearLayout) groupView.findViewById(R.id.ll_address_right);
+        voice = (LinearLayout) groupView.findViewById(R.id.ll_voice);
+        freContact.setOnClickListener(listener);
+        urgentCall.setOnClickListener(listener);
+        voice.setOnClickListener(listener);
     }
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
@@ -52,6 +54,10 @@ public class AddressFragment extends Fragment {
                 case R.id.ll_address_right:
                     //跳转到紧急电话
                     startActivity(new Intent(getContext(),UrgentCall.class));
+                    break;
+                case R.id.ll_voice:
+                    //跳转到语音互动
+                    startActivity(new Intent(getContext(),VoiceActivity.class));
                     break;
             }
         }

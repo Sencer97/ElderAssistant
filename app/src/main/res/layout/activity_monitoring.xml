@@ -20,4 +20,10 @@
             android:id="@+id/monitoring_title" />
     </android.support.v7.widget.Toolbar>
 
+    <VideoView
+        android:id="@+id/vv_monitoring"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
 </LinearLayout>

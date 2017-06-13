@@ -1,12 +1,14 @@
 package com.example.shengchun.elderassistant.status;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -36,6 +38,16 @@ public class EnvironmentActivity extends Activity {
                 finish();
             }
         });
+        toolbar.inflateMenu(R.menu.menu_history);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if(item.getItemId() == R.id.history){
+                    startActivity(new Intent(getBaseContext(),HistoricalDataAcitivity.class));
+                }
+                return true;
+            }
+        });
         /**
          * 传感器接收的数据
          */
@@ -63,7 +75,6 @@ public class EnvironmentActivity extends Activity {
                             pm2_5.setText("63 μg/m³");
                             CO.setText("0.02 %");
                             smoke.setText("0.04 %");
-                           // Toast.makeText(getBaseContext(),"刷新成功！",Toast.LENGTH_SHORT).show();
                             Snackbar.make(temperature,"刷新成功~",Snackbar.LENGTH_SHORT).show();
                         }
                     }, 2000);   //转圈圈两秒
@@ -75,4 +86,5 @@ public class EnvironmentActivity extends Activity {
         });
 
     }
+
 }

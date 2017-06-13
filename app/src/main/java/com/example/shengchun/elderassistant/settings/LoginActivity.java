@@ -69,7 +69,7 @@ public class LoginActivity extends Activity {
                         cursor.moveToFirst();
                         String password = cursor.getString(0);
                         if (password.equals(pwd)) {
-                            Toast.makeText(getBaseContext(), "Login successfully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getBaseContext(), "登陆成功!", Toast.LENGTH_SHORT).show();
                         } else {
                             et_password.setError("密码错误，请重新输入！");
                             et_password.setText("");
@@ -99,9 +99,9 @@ public class LoginActivity extends Activity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
 
-                    Toast.makeText(context,"记住密码",Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(context,"记住密码",Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(context,"不记住密码",Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(context,"不记住密码",Toast.LENGTH_SHORT).show();
                 }
             }
         });
