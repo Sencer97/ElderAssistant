@@ -15,7 +15,7 @@ import java.io.OutputStream;
 
 public class AppliancesActivity extends Activity {
     private Toolbar toolbar;
-    private SwitchButton sb_tv,sb_air,sb_light;
+    private SwitchButton sb_tv,sb_air,sb_light,sb_door;
     private OutputStream os;
     private static final String TAG = "AppliancesActivity";
 
@@ -54,7 +54,7 @@ public class AppliancesActivity extends Activity {
         sb_air = (SwitchButton) findViewById(R.id.sb_air);
         sb_light = (SwitchButton) findViewById(R.id.sb_light);
         sb_tv = (SwitchButton) findViewById(R.id.sb_tv);
-
+        sb_door = (SwitchButton) findViewById(R.id.sb_door);
         toolbar.setNavigationIcon(R.drawable.back_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +69,6 @@ public class AppliancesActivity extends Activity {
                     case R.id.sb_air:
                         if (isChecked){
                             //turn on the air
-
 
                             Snackbar.make(sb_air,"空调已开~",Snackbar.LENGTH_SHORT).show();
                         }else {
@@ -101,7 +100,13 @@ public class AppliancesActivity extends Activity {
 
                         }
                         break;
+                    case R.id.sb_door:
+                        if(isChecked){
 
+                            Snackbar.make(sb_light,"房门已开~",Snackbar.LENGTH_SHORT).show();
+                        }else {
+                            Snackbar.make(sb_light,"房门已关~",Snackbar.LENGTH_SHORT).show();
+                        }
                 }
             }
         };
