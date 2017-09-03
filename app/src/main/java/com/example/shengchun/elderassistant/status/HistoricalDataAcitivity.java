@@ -55,14 +55,17 @@ public class HistoricalDataAcitivity extends FragmentActivity {
         //获取屏幕宽度
         screenWith = getWindow().getWindowManager().getDefaultDisplay().getWidth();
         final ViewGroup.LayoutParams lp = line.getLayoutParams();
-        offsetWidth = lp.width = screenWith / 5;
+        offsetWidth = lp.width = screenWith / 4;
         line.setLayoutParams(lp);
         tmp = (TextView) findViewById(R.id.his_temp);
         hum = (TextView) findViewById(R.id.his_hum);
         pm = (TextView) findViewById(R.id.his_pm);
         co = (TextView) findViewById(R.id.his_co);
         smoke = (TextView) findViewById(R.id.his_smoke);
-
+        tmp.setOnClickListener(clickListener);
+        hum.setOnClickListener(clickListener);
+        co.setOnClickListener(clickListener);
+        smoke.setOnClickListener(clickListener);
         viewPager = (ViewPager) findViewById(R.id.vp_data);
         fragments = new ArrayList<Fragment>();
         tempFragment = new TempFragment();
@@ -72,7 +75,7 @@ public class HistoricalDataAcitivity extends FragmentActivity {
         smokeFragment = new SmokeFragment();
         fragments.add(tempFragment);
         fragments.add(humFragment);
-        fragments.add(pmFragment);
+      //  fragments.add(pmFragment);
         fragments.add(coFragment);
         fragments.add(smokeFragment);
         //初始化指示器
@@ -105,13 +108,13 @@ public class HistoricalDataAcitivity extends FragmentActivity {
                     case 1:
                         hum.setTextColor(getResources().getColor(R.color.text_pressed));
                         break;
+//                    case 2:
+//                        pm.setTextColor(getResources().getColor(R.color.text_pressed));
+//                        break;
                     case 2:
-                        pm.setTextColor(getResources().getColor(R.color.text_pressed));
-                        break;
-                    case 3:
                         co.setTextColor(getResources().getColor(R.color.text_pressed));
                         break;
-                    case 4:
+                    case 3:
                         smoke.setTextColor(getResources().getColor(R.color.text_pressed));
                         break;
                 }
@@ -125,7 +128,33 @@ public class HistoricalDataAcitivity extends FragmentActivity {
             }
         });
     }
-
+    View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+               case R.id.his_temp:
+                   viewPager.setCurrentItem(0);
+                   tmp.setTextColor(getResources().getColor(R.color.text_pressed));
+                   line.setTranslationX(offsetWidth*0);
+                   break;
+               case R.id.his_hum:
+                   viewPager.setCurrentItem(1);
+                   hum.setTextColor(getResources().getColor(R.color.text_pressed));
+                   line.setTranslationX(offsetWidth*1);
+                   break;
+               case R.id.his_co:
+                   viewPager.setCurrentItem(2);
+                   co.setTextColor(getResources().getColor(R.color.text_pressed));
+                   line.setTranslationX(offsetWidth*2);
+                   break;
+               case R.id.his_smoke:
+                   viewPager.setCurrentItem(3);
+                   smoke.setTextColor(getResources().getColor(R.color.text_pressed));
+                   line.setTranslationX(offsetWidth*3);
+                   break;
+            }
+        }
+    };
     private void resetTextViewColor() {
         tmp.setTextColor(getResources().getColor(R.color.text_normal));
         hum.setTextColor(getResources().getColor(R.color.text_normal));

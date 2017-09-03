@@ -52,9 +52,9 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);  //取消标题栏，当继承AppCompatActivity时无效
         setContentView(R.layout.activity_main);
+
         init();
     }
-
     private void init() {
         viewPager = (ViewPager) findViewById(R.id.pager);
         fragments = new ArrayList<Fragment>();
@@ -167,6 +167,7 @@ public class MainActivity extends FragmentActivity {
                     tv_setting.setTextColor(getResources().getColor(R.color.text_pressed));
                     viewPager.setCurrentItem(2);
                     break;
+
             }
         }
     };

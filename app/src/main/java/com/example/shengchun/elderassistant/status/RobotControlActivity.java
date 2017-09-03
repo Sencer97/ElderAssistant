@@ -5,9 +5,11 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothSocket;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.shengchun.elderassistant.R;
 import com.suke.widget.SwitchButton;
@@ -42,7 +44,8 @@ public class RobotControlActivity extends Activity {
         setContentView(R.layout.activity_robot_control);
         init();
 
-    }       /**
+    }
+    /**
              *  写数据
              * @param  s 要写入的字符串
              */
@@ -54,8 +57,10 @@ public class RobotControlActivity extends Activity {
                     try{
                         byte[] buffer = data.getBytes();
                         if(BLEConnectThread.bluetoothSocket==null){
-//                           Toast.makeText(getBaseContext(),"请先连接蓝牙设备~",Toast.LENGTH_SHORT).show();
-                           finish();
+                            Looper.prepare();
+                           Toast.makeText(getBaseContext(),"请先连接设备~",Toast.LENGTH_SHORT).show();
+                            Looper.loop();
+                         //  finish();
                         }else{
                             os =  BLEConnectThread.bluetoothSocket.getOutputStream();             //getOutputStream();
                             Log.e(TAG, "run: 往" +data.toString() +"走a");

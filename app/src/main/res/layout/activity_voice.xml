@@ -33,9 +33,8 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="speak"
-        android:src="@drawable/voice"
-        android:background="@android:color/white"
+        android:src="@drawable/speech_selector"
+        android:background="@color/transparent"
         android:id="@+id/btn_speak"
         android:layout_margin="10dp"
          />

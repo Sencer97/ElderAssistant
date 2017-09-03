@@ -36,7 +36,7 @@ public class SettingFragment extends Fragment {
     private RelativeLayout rl_exit;
     private View.OnClickListener click;     //布局点击监听
     private CompoundButton.OnCheckedChangeListener checkedChangeListener;    //通知显示
-    private Switch showConnectSwitch;      //转换器
+    private Switch showConnectSwitch;      //通知栏监听
 
     //通知栏显示的监测数据
     private String tmp = null;

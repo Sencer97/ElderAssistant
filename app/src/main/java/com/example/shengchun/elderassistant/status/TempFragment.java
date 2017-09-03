@@ -124,7 +124,7 @@ public class TempFragment extends Fragment {
             }else
                 xx[j++] = h-3*i+":"+m;
         }
-        String[] yy = {"25", "24", "25", "27", "25"};
+        String[] yy = {"25", "28", "27", "28", "27"};
 
         ArrayList<String> xVals = new ArrayList<String>();
         for (int i = 0; i < xx.length; i++) {

@@ -106,7 +106,7 @@ public class HumFragment extends Fragment {
             }else
                 xx[j++] = h-3*i+":"+m;
         }
-        String[] yy = {"48", "49", "48", "47", "50"};
+        String[] yy = {"40", "43", "40", "35", "34"};
 
         ArrayList<String> xVals = new ArrayList<String>();
         for (int i = 0; i < xx.length; i++) {

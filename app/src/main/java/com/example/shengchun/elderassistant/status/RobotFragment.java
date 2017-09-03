@@ -131,6 +131,7 @@ public class RobotFragment extends Fragment {
                     break;
                 case 3:         //进入远程监控界面
                     startActivity(new Intent(context, MonitoringActivity.class));
+                //  startActivity(new Intent(context,YunDB.class));
                     break;
             }
         }
@@ -159,7 +160,7 @@ public class RobotFragment extends Fragment {
                 listAdapter.notifyDataSetChanged();
             }else{
                 myToast.error();
-                Toast.makeText(getContext(),"附近没有可用蓝牙设备~,~",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"附近没有可用设备~,~",Toast.LENGTH_SHORT).show();
             }
         }
     };

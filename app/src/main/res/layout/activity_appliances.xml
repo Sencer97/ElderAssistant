@@ -19,129 +19,234 @@
             android:id="@+id/appliances_title"/>
     </android.support.v7.widget.Toolbar>
 
-    <RelativeLayout
-        android:background="@android:color/white"
-        android:padding="20dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            //tv
+            <RelativeLayout
+                android:background="@android:color/white"
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <com.suke.widget.SwitchButton
-            android:id="@+id/sb_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="19dp" />
+                <com.suke.widget.SwitchButton
+                    android:id="@+id/sb_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="19dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="电视开关"
-            android:textSize="20dp"
-            android:layout_alignBottom="@+id/sb_tv"
-            android:layout_toEndOf="@+id/imageView2"
-            android:layout_marginStart="31dp"
-            android:id="@+id/textView2" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/tv"
-            android:id="@+id/imageView2"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true" />
-    </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="电视开关"
+                    android:textSize="20dp"
+                    android:layout_alignBottom="@+id/sb_tv"
+                    android:layout_toEndOf="@+id/imageView2"
+                    android:layout_marginStart="31dp"
+                    android:id="@+id/textView2" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/tv"
+                    android:id="@+id/imageView2"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+            //air
+            <RelativeLayout
+                android:background="@android:color/white"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/air"
+                    android:id="@+id/iv_air" />
 
-    <RelativeLayout
-        android:background="@android:color/white"
-        android:layout_marginTop="10dp"
-        android:padding="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/air"
-            android:id="@+id/iv_air" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="空调开关"
+                    android:textSize="20dp"
+                    android:layout_marginStart="30dp"
+                    android:id="@+id/tv_room"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/iv_air" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="空调开关"
-            android:textSize="20dp"
-            android:layout_marginStart="30dp"
-            android:id="@+id/tv_room"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/iv_air" />
+                <com.suke.widget.SwitchButton
+                    android:id="@+id/sb_air"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="19dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+            //light
+            <RelativeLayout
+                android:background="@android:color/white"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/lamp"
+                    android:id="@+id/iv_light" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="客厅灯开关"
+                    android:textSize="20dp"
+                    android:layout_marginStart="30dp"
+                    android:id="@+id/textView"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/iv_light" />
 
-        <com.suke.widget.SwitchButton
-            android:id="@+id/sb_air"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="19dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:background="@android:color/white"
-        android:layout_marginTop="10dp"
-        android:padding="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/lamp"
-            android:id="@+id/iv_light" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="电灯开关"
-            android:textSize="20dp"
-            android:layout_marginStart="30dp"
-            android:id="@+id/textView"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/iv_light" />
-
-        <com.suke.widget.SwitchButton
-            android:id="@+id/sb_light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="19dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true" />
+                <com.suke.widget.SwitchButton
+                    android:id="@+id/sb_light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="19dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true" />
 
 
-    </RelativeLayout>
-    <RelativeLayout
-        android:background="@android:color/white"
-        android:layout_marginTop="10dp"
-        android:padding="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/door"
-            android:id="@+id/iv_door" />
+            </RelativeLayout>
+            //door
+            <RelativeLayout
+                android:background="@android:color/white"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/door"
+                    android:id="@+id/iv_door" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="房门开关"
-            android:textSize="20dp"
-            android:layout_marginStart="30dp"
-            android:id="@+id/tv_door"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/iv_door" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="房门开关"
+                    android:textSize="20dp"
+                    android:layout_marginStart="30dp"
+                    android:id="@+id/tv_door"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/iv_door" />
 
-        <com.suke.widget.SwitchButton
-            android:id="@+id/sb_door"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="19dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true" />
-    </RelativeLayout>
+                <com.suke.widget.SwitchButton
+                    android:id="@+id/sb_door"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="19dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+            //window
+            <RelativeLayout
+                android:background="@android:color/white"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/window"
+                    android:id="@+id/iv_window" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="窗户开关"
+                    android:textSize="20dp"
+                    android:layout_marginStart="30dp"
+                    android:id="@+id/tv_window"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/iv_window" />
+
+                <com.suke.widget.SwitchButton
+                    android:id="@+id/sb_window"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="19dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+            //curtain
+            <RelativeLayout
+                android:background="@android:color/white"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/curtain"
+                    android:id="@+id/iv_curtain" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="窗帘开关"
+                    android:textSize="20dp"
+                    android:layout_marginStart="30dp"
+                    android:id="@+id/tv_curtain"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/iv_curtain" />
+                <com.suke.widget.SwitchButton
+                    android:id="@+id/sb_curtain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="19dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+            //wc
+            <RelativeLayout
+                android:background="@android:color/white"
+                android:layout_marginTop="10dp"
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/hearter"
+                    android:id="@+id/iv_hot" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="热水器开关"
+                    android:textSize="20dp"
+                    android:layout_marginStart="30dp"
+                    android:id="@+id/tv_hot"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/iv_hot" />
+                <com.suke.widget.SwitchButton
+                    android:id="@+id/sb_hot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="19dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

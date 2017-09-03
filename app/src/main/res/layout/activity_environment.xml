@@ -7,21 +7,21 @@
    >
 
 
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/environment_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/environment"
-        android:paddingLeft="5dp"
-        style="@style/title_text"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/environment_title" />
+
+        <TextView
+            android:id="@+id/environment_title"
+            style="@style/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:paddingLeft="5dp"
+            android:text="@string/environment" />
 
 
     </android.support.v7.widget.Toolbar>
@@ -64,7 +64,7 @@
                     android:id="@+id/temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="20 ℃"
+                    android:text="28 ℃"
                     android:layout_margin="20dp"
                     android:textSize="30dp"
                     />
@@ -96,7 +96,7 @@
                     android:id="@+id/humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="52 %"
+                    android:text="50 %"
                     android:layout_margin="20dp"
                     android:textSize="30dp"
                     />
@@ -108,6 +108,7 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
                 android:clickable="true"
+                android:visibility="gone"
                 android:layout_marginTop="10dp"
                 >
                 <ImageView

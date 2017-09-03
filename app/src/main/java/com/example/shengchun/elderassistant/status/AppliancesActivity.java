@@ -1,60 +1,50 @@
 package com.example.shengchun.elderassistant.status;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 
 import com.example.shengchun.elderassistant.R;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.suke.widget.SwitchButton;
 
-import java.io.IOException;
 import java.io.OutputStream;
 
 public class AppliancesActivity extends Activity {
     private Toolbar toolbar;
-    private SwitchButton sb_tv,sb_air,sb_light,sb_door;
+    private SwitchButton sb_tv, sb_air, sb_light, sb_door, sb_window, sb_curtain, sb_hot;
     private OutputStream os;
     private static final String TAG = "AppliancesActivity";
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appliances);
         init();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
-    /**  写数据
-     *  @param  s 要写入的字符串
-     */
-    public void writeData(String s){
-        final String data = s;
-        new Thread(){
-            @Override
-            public void run() {
-                try{
-                    byte[] buffer = data.getBytes();
-                    if(BLEConnectThread.bluetoothSocket==null){
-                        finish();
-                    }else{
-                        os =  BLEConnectThread.bluetoothSocket.getOutputStream();             //getOutputStream();
-                        os.write(buffer);
-                        Log.e(TAG, "run: 开关灯~");
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Log.e(TAG,e.toString());
-                }
-            }
-        }.start();
-    }
+
     private void init() {
         toolbar = (Toolbar) findViewById(R.id.appliances_toolbar);
         sb_air = (SwitchButton) findViewById(R.id.sb_air);
         sb_light = (SwitchButton) findViewById(R.id.sb_light);
         sb_tv = (SwitchButton) findViewById(R.id.sb_tv);
         sb_door = (SwitchButton) findViewById(R.id.sb_door);
+        sb_window = (SwitchButton) findViewById(R.id.sb_window);
+        sb_curtain = (SwitchButton) findViewById(R.id.sb_curtain);
+        sb_hot = (SwitchButton) findViewById(R.id.sb_hot);
         toolbar.setNavigationIcon(R.drawable.back_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,54 +55,286 @@ public class AppliancesActivity extends Activity {
         SwitchButton.OnCheckedChangeListener checkedChangeListener = new SwitchButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(SwitchButton view, boolean isChecked) {
-                switch (view.getId()){
+                switch (view.getId()) {
                     case R.id.sb_air:
-                        if (isChecked){
+                        if (isChecked) {
                             //turn on the air
-
-                            Snackbar.make(sb_air,"空调已开~",Snackbar.LENGTH_SHORT).show();
-                        }else {
+                            openAirConditioning();
+//                            Snackbar.make(sb_air,"空调已开~",Snackbar.LENGTH_SHORT).show();
+                        } else {
                             //turn off the air
-
-                            Snackbar.make(sb_air,"空调已关~",Snackbar.LENGTH_SHORT).show();
+                            closeAirConditioning();
+//                            Snackbar.make(sb_air,"空调已关~",Snackbar.LENGTH_SHORT).show();
                         }
-
                         break;
                     case R.id.sb_tv:
-                        if (isChecked){
+                        if (isChecked) {
                             //turn on the TV
-
-                            Snackbar.make(sb_tv,"电视已开~",Snackbar.LENGTH_SHORT).show();
-                        }else {
+                            openTelevision();
+//                            Snackbar.make(sb_tv,"电视已开~",Snackbar.LENGTH_SHORT).show();
+                        } else {
                             //turn off the TV
-
-                            Snackbar.make(sb_tv,"电视已关~",Snackbar.LENGTH_SHORT).show();
+                            closeTelevision();
+//                            Snackbar.make(sb_tv,"电视已关~",Snackbar.LENGTH_SHORT).show();
                         }
                         break;
                     case R.id.sb_light:
-                        if (isChecked){
+                        if (isChecked) {
                             //turn on the light
-
-                            Snackbar.make(sb_light,"电灯已开~",Snackbar.LENGTH_SHORT).show();
-                        }else {
+                            openGuestRoomBulb();
+//                            Snackbar.make(sb_light,"电灯已开~",Snackbar.LENGTH_SHORT).show();
+                        } else {
                             //turn off the light
-                            Snackbar.make(sb_light,"电灯已关~",Snackbar.LENGTH_SHORT).show();
+                            closeGuestRoomBulb();
+//                            Snackbar.make(sb_light,"电灯已关~",Snackbar.LENGTH_SHORT).show();
 
                         }
                         break;
                     case R.id.sb_door:
-                        if(isChecked){
-
-                            Snackbar.make(sb_light,"房门已开~",Snackbar.LENGTH_SHORT).show();
-                        }else {
-                            Snackbar.make(sb_light,"房门已关~",Snackbar.LENGTH_SHORT).show();
+                        if (isChecked) {
+                            openDoor();
+//                            Snackbar.make(sb_door,"房门已开~",Snackbar.LENGTH_SHORT).show();
+                        } else {
+                            closeDoor();
+//                            Snackbar.make(sb_door,"房门已关~",Snackbar.LENGTH_SHORT).show();
                         }
+                        break;
+                    case R.id.sb_window:
+                        if (isChecked) {
+                            openWindow();
+//                            Snackbar.make(sb_window,"窗户已开~",Snackbar.LENGTH_SHORT).show();
+                        } else {
+                            closeWindow();
+//                            Snackbar.make(sb_window,"窗户已关~",Snackbar.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case R.id.sb_curtain:
+                        if (isChecked) {
+                            openCurtain();
+//                            Snackbar.make(sb_window,"窗户已开~",Snackbar.LENGTH_SHORT).show();
+                        } else {
+                            closeCurtain();
+//                            Snackbar.make(sb_window,"窗户已关~",Snackbar.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case R.id.sb_hot:
+                        if (isChecked) {
+                            openHearter();
+                        } else {
+                            closeHearter();
+                        }
+                        break;
                 }
             }
         };
         sb_air.setOnCheckedChangeListener(checkedChangeListener);
         sb_light.setOnCheckedChangeListener(checkedChangeListener);
         sb_tv.setOnCheckedChangeListener(checkedChangeListener);
+        sb_door.setOnCheckedChangeListener(checkedChangeListener);
+        sb_window.setOnCheckedChangeListener(checkedChangeListener);
+        sb_curtain.setOnCheckedChangeListener(checkedChangeListener);
+        sb_hot.setOnCheckedChangeListener(checkedChangeListener);
+    }
 
+    /**
+     * 打开热水器
+     */
+    public static void openHearter() {
+
+        String address = "";
+        String operation = "开热水器";
+        address = "http://115.28.52.206/openwrt/krsq.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+    /**
+     * 关闭热水器
+     */
+    public static void closeHearter() {
+
+        String address = "";
+        String operation = "关热水器";
+        address = "http://115.28.52.206/openwrt/grsq.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+    /**
+     * 打开窗帘
+     */
+    public static void openCurtain() {
+        String address = "";
+        String operation = "开窗帘";
+        address = "http://115.28.52.206/openwrt/kcl.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+
+    /**
+     * 关窗帘
+     */
+    public static void closeCurtain() {
+
+        String address = "";
+        String operation = "关窗帘";
+        address = "http://115.28.52.206/openwrt/gcl.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+
+    /**
+     * 打开客厅灯
+     */
+    public static void openGuestRoomBulb() {
+
+        String address = "";
+        String operation = "开客厅灯";
+        address = "http://115.28.52.206/openwrt/kkt.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+
+    /**
+     * 关闭客厅灯
+     */
+    public static void closeGuestRoomBulb() {
+
+        String address = "";
+        String operation = "关客厅灯";
+        address = "http://115.28.52.206/openwrt/gkt.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+
+    /**
+     * 打开空调
+     */
+    public static void openAirConditioning() {
+
+        String address = "";
+        String operation = "开空调";
+        address = "http://115.28.52.206/openwrt/ktk.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+
+    /**
+     * 关闭空调
+     */
+    public static void closeAirConditioning() {
+
+        String address = "";
+        String operation = "关空调";
+        address = "http://115.28.52.206/openwrt/ktg.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+
+    }
+
+    /**
+     * 打开电视
+     */
+    public static void openTelevision() {
+
+        String address = "";
+        // Toast.makeText(MyApplication.getContext(), "电视已开", Toast.LENGTH_SHORT).show();
+        String operation = "开电视";
+        address = "http://115.28.52.206/openwrt/kds.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+
+    /**
+     * 关闭电视
+     */
+    public static void closeTelevision() {
+        String address = "";
+        String operation = "关电视";
+        address = "http://115.28.52.206/openwrt/gds.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+
+    /**
+     * 关闭门
+     */
+    public static void closeDoor() {
+
+        String address = "";
+        String operation = "关门";
+        address = "http://115.28.52.206/openwrt/gm.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+        //isOpenDoor = false;       //关了门之后再开门就要密码了
+    }
+
+    /**
+     * 打开门
+     */
+    public static void  openDoor() {
+        String address = "";
+        address = "http://115.28.52.206/openwrt/km.php";
+        String operation = "开门";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+
+    /**
+     * 关闭窗
+     */
+    public static void closeWindow() {
+
+        String address = "";
+        String operation = "关窗";
+        address = "http://115.28.52.206/openwrt/gc.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+
+    /**
+     * 打开窗
+     */
+    public static void openWindow() {
+        String address = "";
+        String operation = "开窗";
+        address = "http://115.28.52.206/openwrt/kc.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    public Action getIndexApiAction() {
+        Thing object = new Thing.Builder()
+                .setName("Appliances Page") // TODO: Define a title for the content shown.
+                // TODO: Make sure this auto-generated URL is correct.
+                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+                .build();
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+        client.disconnect();
     }
 }

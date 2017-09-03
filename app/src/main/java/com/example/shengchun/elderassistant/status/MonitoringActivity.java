@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.example.shengchun.elderassistant.R;
@@ -20,7 +21,8 @@ public class MonitoringActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monitoring);
-        init();
+        Toast.makeText(getBaseContext(),"连接异常...",Toast.LENGTH_SHORT).show();
+     //   init();
     }
     private void init() {
         toolbar = (Toolbar) findViewById(R.id.monitoring_toolbar);
@@ -37,7 +39,7 @@ public class MonitoringActivity extends Activity {
        // videoView.setVideoPath(file.getPath());   //设置播放的文件路径
        // Uri.parse("/mnt/nand/sdcard/test.mp4")
       //  videoView.setVideoURI(Uri.parse(Environment.getExternalStorageDirectory().getPath()+"/test.mp4"));
-        videoView.setVideoPath(Environment.getExternalStorageDirectory().getPath()+"/1/haha.mp4");   //只能播放手机内的视频
+        videoView.setVideoPath(Environment.getExternalStorageDirectory().getPath()+"/test.mp4");   //只能播放手机内的视频
         videoView.start();
         videoView.requestFocus();
         videoView.setMediaController(mediaController);

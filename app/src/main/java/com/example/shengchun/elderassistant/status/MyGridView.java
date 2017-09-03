@@ -37,8 +37,6 @@ public class MyGridView extends GridView {
          *          int widthMode = MeasureSpec.getMode(widthMeasureSpec);
          *          int widthSize = MeasureSpec.getSize(widthMeasureSpec);
          *
-         *
-         *
          */
 
     }

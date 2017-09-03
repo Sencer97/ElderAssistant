@@ -24,6 +24,10 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
+
 public class FeedbackActivity extends Activity {
     private EditText content,mail;
     private Button submit;
@@ -33,11 +37,13 @@ public class FeedbackActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
+        //初始化Bmob
+        Bmob.initialize(this,"ea245002cb6523600aac65baa47a01db");
         init();
     }
     private void init() {
         content = (EditText) findViewById(R.id.et_advice);
-     //   mail = (EditText) findViewById(R.id.et_mail);
+        mail = (EditText) findViewById(R.id.et_mail);
         submit = (Button) findViewById(R.id.submit_btn);
         toolbar = (Toolbar) findViewById(R.id.feedback_toolbar);
         toolbar.setNavigationIcon(R.drawable.back_white);
@@ -50,24 +56,42 @@ public class FeedbackActivity extends Activity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String mesg = content.getText().toString();
+                String mesg = content.getText().toString();
+                String email = mail.getText().toString();
+                Feedback feedbackObj = new Feedback(mesg,email);
                 if(mesg.equals("")){
                     Toast.makeText(getBaseContext(),"亲~反馈不能为空哦！",Toast.LENGTH_SHORT).show();
                 }else {
-                    new Thread(){
-                        public void run(){
-                            try {
-                                //       new SimpleMailSender().sendTextMail(new MailSenderInfo("意见反馈",mesg,"1468504442@qq.com","1095035974@qq.com",
-                                //           "1468504442@qq.com","yvszkprdsvyiffdg"));  //yvszkprdsvyiffdg 授权码
-                                Log.d("send","successfully!");
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                    feedbackObj.save(new SaveListener<String>() {
+                        @Override
+                        public void done(String s, BmobException e) {
+                            if (e == null) {
+                                //success
+                                Toast.makeText(getBaseContext(), "反馈成功！", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getBaseContext(), "反馈失败！请查看网络连接~", Toast.LENGTH_SHORT).show();
                             }
                         }
-                    }.start();
-                    Toast.makeText(getBaseContext(),"反馈成功！", Toast.LENGTH_SHORT).show();
-                    finish();
+                    });
                 }
+                /**
+                 if(mesg.equals("")){
+                 Toast.makeText(getBaseContext(),"亲~反馈不能为空哦！",Toast.LENGTH_SHORT).show();
+                 }else {
+                 new Thread(){
+                 public void run(){
+                 try {
+                 //       new SimpleMailSender().sendTextMail(new MailSenderInfo("意见反馈",mesg,"1468504442@qq.com","1095035974@qq.com",
+                 //           "1468504442@qq.com","yvszkprdsvyiffdg"));  //yvszkprdsvyiffdg 授权码
+                 Log.d("send","successfully!");
+                 } catch (Exception e) {
+                 e.printStackTrace();
+                 }
+                 }
+                 }.start();
+                 Toast.makeText(getBaseContext(),"反馈成功！", Toast.LENGTH_SHORT).show();
+                 finish();
+                 } */
             }
         });
     }
