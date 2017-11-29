@@ -14,8 +14,6 @@ import android.widget.TextView;
 
 import com.example.shengchun.elderassistant.R;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
-
 
 public class EnvironmentActivity extends Activity {
     private Toolbar toolbar;                //顶部工具栏
@@ -26,7 +24,7 @@ public class EnvironmentActivity extends Activity {
     private TextView smoke;                 //烟雾浓度
     private SwipeRefreshLayout swipeRefreshLayout;
     private boolean isRefreshing = false;
-    private String[] tmp = {"27","28","27","28"},
+    private String[] tmp = {"22","21","20","23"},
                     hum = {"35","33","33","34"},
                     pm = {"65","68","64","65"},
                     co = {"0.02","0.03","0.02","0.01"},
@@ -37,7 +35,7 @@ public class EnvironmentActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_environment);
         init();
-        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(EnvironmentActivity.this,SweetAlertDialog.WARNING_TYPE)
+       /* SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(EnvironmentActivity.this,SweetAlertDialog.WARNING_TYPE)
                 .setTitleText("温馨提示")
                 .setContentText("室外天气炎热，出门请注意防晒哦！")
                 .setConfirmText("知道啦~")
@@ -49,7 +47,7 @@ public class EnvironmentActivity extends Activity {
                         sweetAlertDialog.dismiss();
                     }
                 });
-        sweetAlertDialog.show();
+        sweetAlertDialog.show();*/
 //                        new Thread(){
 //                            @Override
 //                            public void run() {

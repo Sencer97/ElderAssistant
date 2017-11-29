@@ -52,7 +52,6 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);  //取消标题栏，当继承AppCompatActivity时无效
         setContentView(R.layout.activity_main);
-
         init();
     }
     private void init() {

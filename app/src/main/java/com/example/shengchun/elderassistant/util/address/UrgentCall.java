@@ -37,8 +37,8 @@ public class UrgentCall extends Activity {
     private ListView listView;
     private List<Map<String, Object>> dataList;
     private int[] icon_call = {R.drawable.ambulance, R.drawable.police, R.drawable.fire_alarm, R.drawable.traffic,R.drawable.mobile};
-    private String[] calls = {"急救电话", "报警电话", "火警电话", "交警电话","China Mobile"};
-    private String[] numbers = {"120", "110", "119", "122","10086"};
+    private String[] calls = {"急救电话", "报警电话", "火警电话", "交警电话"};
+    private String[] numbers = {"120", "110", "119", "122"};
     private final String CALL_ACTION = "android.intent.action.CALL";
 
 
@@ -114,6 +114,8 @@ public class UrgentCall extends Activity {
          * 设置屏幕的背景透明度
          * @param bgAlpha
          */
+
+
         public void backgroundAlpha(float bgAlpha) {
             WindowManager.LayoutParams lp = getWindow().getAttributes();
             lp.alpha = bgAlpha; // 0.0-1.0

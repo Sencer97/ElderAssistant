@@ -1,53 +1,52 @@
 package com.example.shengchun.elderassistant.status;
 
 import android.util.Log;
-        import android.os.Handler;
-        import android.os.Message;
+import android.os.Handler;
+import android.os.Message;
 
 
-        import java.io.BufferedReader;
-        import java.io.IOException;
-        import java.io.InputStream;
-        import java.io.InputStreamReader;
-        import java.net.HttpURLConnection;
-        import java.net.MalformedURLException;
-        import java.net.URL;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
- * Created by feng on 2016/6/30.
- * ÖÇÄÜÄ£¿é·ÃÎÊ·şÎñÆ÷
+ * æ™ºèƒ½æ¨¡å—è®¿é—®æœåŠ¡å™¨
  */
 public class SendRequestWithHttpUrlConnection {
 
     private static final String TAG = "SendRequestWithHttpUrlConnection";
-    private static final int CONNECT= 1;      //´Ó·şÎñÆ÷»ñÈ¡ĞÅÏ¢³É¹¦¾Í±ê¼ÇÎª1
+    private static final int CONNECT= 1;      //ä»æœåŠ¡å™¨è·å–ä¿¡æ¯æˆåŠŸå°±æ ‡è®°ä¸º1
 
     private HttpURLConnection httpUrlConnection;
-    /**Òª·ÃÎÊµÄµØÖ·*/
+    /**è¦è®¿é—®çš„åœ°å€*/
     private String address;
-    /**Òª·ÃÎÊµÄµØÖ·*/
+    /**è¦è®¿é—®çš„åœ°å€*/
     private URL url;
-    /**´ÓÍøÒ³ÉÏ·µ»ØµÄÊı¾İ*/
+    /**ä»ç½‘é¡µä¸Šè¿”å›çš„æ•°æ®*/
     private StringBuilder response;
-    /**µ±Ç°²Ù×÷*/
+    /**å½“å‰æ“ä½œ*/
     private String opreation;
 
     private  Handler handler = new Handler() {
         @Override
-        public void handleMessage(Message msg) {  //Èç¹ûÏëÍøÂçÇëÇó³É¹¦!!!
+        public void handleMessage(Message msg) {  //å¦‚æœæƒ³ç½‘ç»œè¯·æ±‚æˆåŠŸ!!!
             super.handleMessage(msg);
-            Log.e("HttpUrlConnection", "handleMessageÄÚ²¿!!!");
+            Log.e("HttpUrlConnection", "handleMessageå†…éƒ¨!!!");
             if(msg.what == CONNECT)
             {
-             //   Log.e("HttpUrlConnection" ,"response = " +  response.toString());
+                //   Log.e("HttpUrlConnection" ,"response = " +  response.toString());
             }
-          //  Log.e("HttpUrlConnection" ,"response = " +  response.toString());
+            //  Log.e("HttpUrlConnection" ,"response = " +  response.toString());
         }
 
         @Override
         public void dispatchMessage(Message msg) {
             super.dispatchMessage(msg);
-            Log.e("HttpUrlConnection","ÏµÍ³ÏûÏ¢ = " +  msg.toString() );
+            Log.e("HttpUrlConnection","ç³»ç»Ÿæ¶ˆæ¯ = " +  msg.toString() );
         }
     };
 
@@ -58,7 +57,7 @@ public class SendRequestWithHttpUrlConnection {
     }
 
     /**
-     * Ïò·şÎñÆ÷µØÖ·£¬ÇëÇóÊı¾İ
+     * å‘æœåŠ¡å™¨åœ°å€ï¼Œè¯·æ±‚æ•°æ®
      */
     public void RequestInternetConnection()
     {
@@ -67,12 +66,12 @@ public class SendRequestWithHttpUrlConnection {
             @Override
             public void run() {
                 try {
-                    //Toast.makeText(MyApplication.getContext() , "·¢ËÍÍøÂçÇëÇó", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(MyApplication.getContext() , "å‘é€ç½‘ç»œè¯·æ±‚", Toast.LENGTH_LONG).show();
                     url = new URL(address);
                     httpUrlConnection = (HttpURLConnection) url.openConnection();
                     httpUrlConnection.setRequestMethod("POST");
                     httpUrlConnection.setReadTimeout(8000);
-                    httpUrlConnection.setConnectTimeout(8000);           //ÉèÖÃ³¬¹ıÁË¹æ¶¨µÄÊ±¼ä»¹Ã»ÓĞÓëÍøÂçÁ¬½Ó
+                    httpUrlConnection.setConnectTimeout(8000);           //è®¾ç½®è¶…è¿‡äº†è§„å®šçš„æ—¶é—´è¿˜æ²¡æœ‰ä¸ç½‘ç»œè¿æ¥
                     InputStream in = httpUrlConnection.getInputStream();
                     BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
@@ -86,19 +85,19 @@ public class SendRequestWithHttpUrlConnection {
                     Message msg = new Message();
                     msg.what = CONNECT;
                     msg.obj = response;
-                    handler.sendMessage(msg);                  //Èç¹û´ÓÍøÉÏ»ñÈ¡ÏûÏ¢³É¹¦£¬Ôò·µ»Øµ½MusicTopFÖĞµÄhandlerÖĞ!!!
-                    Log.e("HttpUrlConnection" , "ÔËĞĞµ½ÕâÀï!!!");
+                    handler.sendMessage(msg);                  //å¦‚æœä»ç½‘ä¸Šè·å–æ¶ˆæ¯æˆåŠŸï¼Œåˆ™è¿”å›åˆ°MusicTopFä¸­çš„handlerä¸­!!!
+                    Log.e("HttpUrlConnection" , "è¿è¡Œåˆ°è¿™é‡Œ!!!");
 
 
                 } catch (MalformedURLException e1) {
                     e1.printStackTrace();
                 } catch (IOException e) {
-                    Log.e("HttpUrlConnection" , "·şÎñÆ÷Ã»ÏìÓ¦,ÇëÉÔºóÔÙÊÔ");
+                    Log.e("HttpUrlConnection" , "æœåŠ¡å™¨æ²¡å“åº”,è¯·ç¨åå†è¯•");
                     e.printStackTrace();
                 }
                 finally {
                     httpUrlConnection.disconnect();
-                    Log.e("HttpUrlConnection", "ÔËĞĞµ½finallyÄÚ²¿!!!");
+                    Log.e("HttpUrlConnection", "è¿è¡Œåˆ°finallyå†…éƒ¨!!!");
                 }
             }
         }).start();

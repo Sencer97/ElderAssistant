@@ -13,7 +13,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="智能老人助理系统"
+        android:text="@string/app"
         android:textSize="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

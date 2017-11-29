@@ -53,5 +53,55 @@
             android:layout_toEndOf="@+id/textView4" />
 
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/start_btn"
+            android:layout_margin="10dp"
+            android:background="@drawable/arc_button_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="启动"
+            android:textSize="18dp"
+            android:textColor="#fff"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/stop_btn"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/arc_button_selector"
+            android:text="停止"
+            android:textSize="18dp"
+            android:textColor="#fff"
+            android:layout_weight="1"
 
+            />
+        <Button
+            android:id="@+id/half_auto_btn"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/arc_button_selector"
+            android:text="半自动"
+            android:textSize="18dp"
+            android:textColor="#fff"
+            android:layout_weight="1"
+
+            />
+        <Button
+            android:id="@+id/hand_control_btn"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/arc_button_selector"
+            android:text="手控"
+            android:textSize="18dp"
+            android:textColor="#fff"
+            android:layout_weight="1"
+
+            />
+    </LinearLayout>
 </LinearLayout>

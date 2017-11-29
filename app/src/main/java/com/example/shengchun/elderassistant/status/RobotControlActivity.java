@@ -9,6 +9,7 @@ import android.os.Looper;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.shengchun.elderassistant.R;
@@ -17,6 +18,8 @@ import com.suke.widget.SwitchButton;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.UUID;
+
+import static com.example.shengchun.elderassistant.R.drawable.stop;
 
         /**
          * 遥控机器人
@@ -27,6 +30,7 @@ public class RobotControlActivity extends Activity {
     private Toolbar toolbar;
     private RoundControlView roundControlView;            //遥控方向盘
     private SwitchButton car_light;
+    private Button start_btn,stop_btn,half_auto_btn,control_btn;
     private final int icon_dir = R.drawable.go;
     private static final String TAG = "RobotControlActivity";
     /**
@@ -73,6 +77,27 @@ public class RobotControlActivity extends Activity {
                 }
             }.start();
     }
+
+    View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.start_btn:
+                    writeData("R@#");
+                    break;
+                case R.id.stop_btn:
+                    writeData("T@#");
+                    break;
+                case R.id.half_auto_btn:
+                    writeData("O@#");
+                    break;
+                case R.id.hand_control_btn:
+                    writeData("P@#");
+                    break;
+
+            }
+        }
+    };
     private void init() {
         toolbar = (Toolbar) findViewById(R.id.robot_toolbar);
         toolbar.setNavigationIcon(R.drawable.back_white);
@@ -84,6 +109,14 @@ public class RobotControlActivity extends Activity {
         });
         roundControlView = (RoundControlView) findViewById(R.id.roundControlView);
         car_light = (SwitchButton) findViewById(R.id.car_light_switch);
+        start_btn = (Button) findViewById(R.id.start_btn);
+        stop_btn = (Button) findViewById(R.id.stop_btn);
+        half_auto_btn = (Button) findViewById(R.id.half_auto_btn);
+        control_btn = (Button) findViewById(R.id.hand_control_btn);
+        start_btn.setOnClickListener(clickListener);
+        stop_btn.setOnClickListener(clickListener);
+        half_auto_btn.setOnClickListener(clickListener);
+        control_btn.setOnClickListener(clickListener);
         //车灯控制
         car_light.setOnCheckedChangeListener(new SwitchButton.OnCheckedChangeListener() {
             @Override
@@ -91,9 +124,11 @@ public class RobotControlActivity extends Activity {
                 if (isChecked){
                     //turn on the light
                     writeData("K@#");
+                //    turnOnLight();
                 }else {
                     //turn off the light
                     writeData("G@#");
+                //    turnOffLight();
                 }
             }
         });
@@ -110,6 +145,7 @@ public class RobotControlActivity extends Activity {
             public void onClick(View view) {
                 //TODO robot go ahead
                 writeData("W@#");
+           //     turnForward();
 //                Toast.makeText(getBaseContext(),"往前走",Toast.LENGTH_SHORT).show();
             }
         };
@@ -123,6 +159,7 @@ public class RobotControlActivity extends Activity {
             public void onClick(View view) {
                 //TODO robot turn back
                 writeData("S@#");
+            //    turnBack();
 //                Toast.makeText(getBaseContext(),"往后走",Toast.LENGTH_SHORT).show();
             }
         };
@@ -136,6 +173,7 @@ public class RobotControlActivity extends Activity {
             public void onClick(View view) {
                 //TODO robot Turn right
                 writeData("D@#");
+ //               turnRight();
 //                Toast.makeText(getBaseContext(),"往右走",Toast.LENGTH_SHORT).show();
             }
         };
@@ -149,6 +187,7 @@ public class RobotControlActivity extends Activity {
             public void onClick(View view) {
                 //TODO robot turn left
                 writeData("A@#");
+//                turnOnLight();
 //                Toast.makeText(getBaseContext(),"往左走",Toast.LENGTH_SHORT).show();
             }
         };
@@ -160,12 +199,63 @@ public class RobotControlActivity extends Activity {
         roundControlView.addRoundMenu(roundMenuRight);
         roundControlView.setCoreMenu(selectColor,
                 getResources().getColor(R.color.red_btn_bg_color),selectColor
-                , 1, 0.43,BitmapFactory.decodeResource(getResources(),R.drawable.stop), new View.OnClickListener() {
+                , 1, 0.43,BitmapFactory.decodeResource(getResources(), stop), new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         writeData("Q@#");
+                 //       stop();
 //                        Toast.makeText(getBaseContext(),"Stop",Toast.LENGTH_SHORT).show();
                     }
                 });
     }
+    public static void turnForward(){
+        String address = "";
+        String operation = "向前";
+        address = "http://115.28.52.206/i_robot/forward.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+    public static void turnBack(){
+                String address = "";
+                String operation = "向后";
+                address = "http://115.28.52.206/i_robot/back.php";
+                SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+                sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+    public static void turnLeft(){
+                String address = "";
+                String operation = "向左";
+                address = "http://115.28.52.206/i_robot/left.php";
+                SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+                sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+    public static void turnRight(){
+                String address = "";
+                String operation = "向后";
+                address = "http://115.28.52.206/i_robot/right.php";
+                SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+                sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+    public static void stop(){
+                String address = "";
+                String operation = "停止";
+                address = "http://115.28.52.206/i_robot/stop.php";
+                SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+                sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+    public static void turnOnLight(){
+                String address = "";
+                String operation = "开车灯";
+                address = "http://115.28.52.206/i_robot/kd.php";
+                SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+                sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+    public static void turnOffLight(){
+                String address = "";
+                String operation = "关车灯";
+                address = "http://115.28.52.206/i_robot/gd.php";
+                SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+                sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+
 }

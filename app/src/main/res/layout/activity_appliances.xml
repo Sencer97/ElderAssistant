@@ -229,14 +229,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="热水器开关"
+                    android:text="智能锁开关"
                     android:textSize="20dp"
                     android:layout_marginStart="30dp"
                     android:id="@+id/tv_hot"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/iv_hot" />
                 <com.suke.widget.SwitchButton
-                    android:id="@+id/sb_hot"
+                    android:id="@+id/sb_lock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="19dp"
