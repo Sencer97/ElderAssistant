@@ -84,15 +84,19 @@ public class RobotControlActivity extends Activity {
             switch (v.getId()){
                 case R.id.start_btn:
                     writeData("R@#");
+//                    startRobot();
                     break;
                 case R.id.stop_btn:
                     writeData("T@#");
+//                    stopRobot();
                     break;
                 case R.id.half_auto_btn:
                     writeData("O@#");
+//                    halfAutoMode();
                     break;
                 case R.id.hand_control_btn:
                     writeData("P@#");
+//                    handControlMode();
                     break;
 
             }
@@ -124,11 +128,11 @@ public class RobotControlActivity extends Activity {
                 if (isChecked){
                     //turn on the light
                     writeData("K@#");
-                //    turnOnLight();
+//                    turnOnLight();
                 }else {
                     //turn off the light
                     writeData("G@#");
-                //    turnOffLight();
+//                    turnOffLight();
                 }
             }
         });
@@ -145,8 +149,7 @@ public class RobotControlActivity extends Activity {
             public void onClick(View view) {
                 //TODO robot go ahead
                 writeData("W@#");
-           //     turnForward();
-//                Toast.makeText(getBaseContext(),"往前走",Toast.LENGTH_SHORT).show();
+//                turnForward();
             }
         };
 
@@ -159,8 +162,7 @@ public class RobotControlActivity extends Activity {
             public void onClick(View view) {
                 //TODO robot turn back
                 writeData("S@#");
-            //    turnBack();
-//                Toast.makeText(getBaseContext(),"往后走",Toast.LENGTH_SHORT).show();
+//                turnBack();
             }
         };
 
@@ -173,8 +175,7 @@ public class RobotControlActivity extends Activity {
             public void onClick(View view) {
                 //TODO robot Turn right
                 writeData("D@#");
- //               turnRight();
-//                Toast.makeText(getBaseContext(),"往右走",Toast.LENGTH_SHORT).show();
+//                turnRight();
             }
         };
 
@@ -188,7 +189,6 @@ public class RobotControlActivity extends Activity {
                 //TODO robot turn left
                 writeData("A@#");
 //                turnOnLight();
-//                Toast.makeText(getBaseContext(),"往左走",Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -203,59 +203,87 @@ public class RobotControlActivity extends Activity {
                     @Override
                     public void onClick(View view) {
                         writeData("Q@#");
-                 //       stop();
-//                        Toast.makeText(getBaseContext(),"Stop",Toast.LENGTH_SHORT).show();
+//                        stop();
                     }
                 });
     }
     public static void turnForward(){
         String address = "";
         String operation = "向前";
-        address = "http://115.28.52.206/i_robot/forward.php";
+        address = "http://119.23.8.34/i_robot/forward.php";
         SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
         sendRequestWithHttpUrlConnection.RequestInternetConnection();
     }
     public static void turnBack(){
                 String address = "";
                 String operation = "向后";
-                address = "http://115.28.52.206/i_robot/back.php";
+                address = "http://119.23.8.34/i_robot/back.php";
                 SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
                 sendRequestWithHttpUrlConnection.RequestInternetConnection();
     }
     public static void turnLeft(){
                 String address = "";
                 String operation = "向左";
-                address = "http://115.28.52.206/i_robot/left.php";
+                address = "http://119.23.8.34/i_robot/left.php";
                 SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
                 sendRequestWithHttpUrlConnection.RequestInternetConnection();
     }
     public static void turnRight(){
                 String address = "";
                 String operation = "向后";
-                address = "http://115.28.52.206/i_robot/right.php";
+                address = "http://119.23.8.34/i_robot/right.php";
                 SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
                 sendRequestWithHttpUrlConnection.RequestInternetConnection();
     }
     public static void stop(){
                 String address = "";
                 String operation = "停止";
-                address = "http://115.28.52.206/i_robot/stop.php";
+                address = "http://119.23.8.34/i_robot/stop.php";
                 SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
                 sendRequestWithHttpUrlConnection.RequestInternetConnection();
     }
     public static void turnOnLight(){
                 String address = "";
                 String operation = "开车灯";
-                address = "http://115.28.52.206/i_robot/kd.php";
+                address = "http://119.23.8.34/i_robot/kd.php";
                 SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
                 sendRequestWithHttpUrlConnection.RequestInternetConnection();
     }
     public static void turnOffLight(){
                 String address = "";
                 String operation = "关车灯";
-                address = "http://115.28.52.206/i_robot/gd.php";
+                address = "http://119.23.8.34/i_robot/gd.php";
                 SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
                 sendRequestWithHttpUrlConnection.RequestInternetConnection();
     }
+    public static void startRobot(){
+        String address = "";
+        String operation = "启动小车";
+        address = "http://119.23.8.34/i_robot/kc.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+    public static void stopRobot(){
+        String address = "";
+        String operation = "关车灯";
+        address = "http://119.23.8.34/i_robot/gc.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+    public static void halfAutoMode(){
+        String address = "";
+        String operation = "半自动";
+        address = "http://119.23.8.34/i_robot/bzd.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+    public static void handControlMode(){
+        String address = "";
+        String operation = "手控";
+        address = "http://119.23.8.34/i_robot/sk.php";
+        SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
+        sendRequestWithHttpUrlConnection.RequestInternetConnection();
+    }
+
 
 }

@@ -17,7 +17,7 @@ import java.io.OutputStream;
 
 public class AppliancesActivity extends Activity {
     private Toolbar toolbar;
-    private SwitchButton sb_tv, sb_air, sb_light, sb_door, sb_window, sb_curtain, sb_lock;
+    private SwitchButton sb_tv, sb_air, sb_light, sb_door, sb_window, sb_curtain, sb_hearter;
     private OutputStream os;
     private static final String TAG = "AppliancesActivity";
     private GoogleApiClient client;
@@ -40,7 +40,7 @@ public class AppliancesActivity extends Activity {
         sb_door = (SwitchButton) findViewById(R.id.sb_door);
         sb_window = (SwitchButton) findViewById(R.id.sb_window);
         sb_curtain = (SwitchButton) findViewById(R.id.sb_curtain);
-        sb_lock = (SwitchButton) findViewById(R.id.sb_lock);
+        sb_hearter = (SwitchButton) findViewById(R.id.sb_hearter);
         toolbar.setNavigationIcon(R.drawable.back_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +113,7 @@ public class AppliancesActivity extends Activity {
 //                            Snackbar.make(sb_window,"窗户已关~",Snackbar.LENGTH_SHORT).show();
                         }
                         break;
-                    case R.id.sb_lock:
+                    case R.id.sb_hearter:
                         if (isChecked) {
                             openHearter();
                         } else {
@@ -129,7 +129,7 @@ public class AppliancesActivity extends Activity {
         sb_door.setOnCheckedChangeListener(checkedChangeListener);
         sb_window.setOnCheckedChangeListener(checkedChangeListener);
         sb_curtain.setOnCheckedChangeListener(checkedChangeListener);
-        sb_lock.setOnCheckedChangeListener(checkedChangeListener);
+        sb_hearter.setOnCheckedChangeListener(checkedChangeListener);
     }
 
     /**
@@ -138,7 +138,7 @@ public class AppliancesActivity extends Activity {
     public static void openHearter() {
 
         String address = "";
-        String operation = "开锁";
+        String operation = "开热水器";
         address = "http://119.23.8.34/openwrt/ks.php";
         SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
         sendRequestWithHttpUrlConnection.RequestInternetConnection();
@@ -149,7 +149,7 @@ public class AppliancesActivity extends Activity {
     public static void closeHearter() {
 
         String address = "";
-        String operation = "关锁";
+        String operation = "关热水器";
         address = "http://119.23.8.34/openwrt/gs.php";
         SendRequestWithHttpUrlConnection sendRequestWithHttpUrlConnection = new SendRequestWithHttpUrlConnection(address, operation);
         sendRequestWithHttpUrlConnection.RequestInternetConnection();

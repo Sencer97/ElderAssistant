@@ -154,12 +154,12 @@ public class VoiceActivity extends Activity {
                     }else if(res.contains("关") && res.contains("窗") && !res.contains("窗帘")){
                         AppliancesActivity.closeWindow();
                         speak("主人，已帮您关窗啦。");
-                    }else if(res.contains("开") && res.contains("锁")){
+                    }else if(res.contains("开") && res.contains("热水")){
                         AppliancesActivity.openHearter();
-                        speak("智能锁已经打开了，请及时使用！");
-                    }else if(res.contains("关") && res.contains("锁")){
+                        speak("热水器已经打开了，请及时使用！");
+                    }else if(res.contains("关") && res.contains("热水")){
                         AppliancesActivity.closeHearter();
-                        speak("锁关好了。");
+                        speak("热水器已关山了。");
                     }
                     res = "";
                 }
